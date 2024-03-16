@@ -1,7 +1,7 @@
 // FavoritePhotos.js
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import './FavoritePhotos.css'; // Import the CSS file
+import './FavoritePhotos.css'; 
 
 function FavoritePhotos() {
   const [favoritePhotoIds, setFavoritePhotoIds] = useState([]);
