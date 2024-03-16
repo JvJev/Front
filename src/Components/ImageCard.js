@@ -3,6 +3,7 @@ import './ImageCard.css';
 
 const ImageCard = ({ image }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false);
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -12,9 +13,16 @@ const ImageCard = ({ image }) => {
     setIsHovered(false);
   };
 
+  const handleFavoriteClick = () => {
+    const favoritePhotos = JSON.parse(localStorage.getItem('favoritePhotos')) || {};
+    favoritePhotos[image.id] = !isFavorite;
+    localStorage.setItem('favoritePhotos', JSON.stringify(favoritePhotos));
+    setIsFavorite(prev => !prev);
+  };
+
   return (
     <div
-      className={`image-card ${isHovered ? 'hovered dimmed' : ''}`} // Add 'dimmed' class on hover
+      className={`image-card ${isHovered ? 'hovered dimmed' : ''}`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -22,14 +30,13 @@ const ImageCard = ({ image }) => {
       <div
         className={`card-body text-center justify-content-center align-items-center ${
           isHovered ? 'visible' : 'invisible'
-        }`} // Toggle visibility on hover
+        }`}
       >
         <div className="card-title">{image.photographer}</div>
-        <hr className="divider" /> {/* Add a horizontal line here */}
-
+        <hr className="divider" />
         <div className="card-text">{image.alt}</div>
-        <button className="favorite-button">
-          Favorite
+        <button className="favorite-button" onClick={handleFavoriteClick}>
+          {isFavorite ? 'Remove Favorite' : 'Favorite'}
         </button>
       </div>
     </div>
