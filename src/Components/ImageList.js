@@ -1,12 +1,11 @@
-// ImageList.js
 import React from 'react';
 import ImageCard from './ImageCard';
 
-const ImageList = ({ images, onFavorite }) => {
+const ImageList = ({ images }) => {
   return (
-    <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
+    <div className="image-grid">
       {images.map((image) => (
-        <ImageCard key={image.id} image={image} onFavorite={onFavorite} />
+        <ImageCard key={image.id} image={image} />
       ))}
     </div>
   );

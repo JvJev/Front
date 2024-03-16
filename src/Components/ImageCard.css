@@ -1,0 +1,29 @@
+/* ... other styles remain the same */
+
+.image-card {
+    position: relative; /* Ensure overlay is positioned relative to card */
+    overflow: hidden; /* Hide overlay when not visible */
+  }
+  
+  /* Use opacity for smooth transition instead of display: none */
+  .overlay {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust opacity for desired darkness */
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .hovered .overlay {
+    opacity: 1; /* Show overlay with full opacity on hover */
+  }
+  
+  .overlay .card-body {
+    color: #fff;
+  }
+  
