@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card, Button } from 'react-bootstrap';
+import './ImageCard.css';
 
 const ImageCard = ({ image }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -13,26 +13,27 @@ const ImageCard = ({ image }) => {
   };
 
   return (
-    <Card
+    <div
       className={`image-card ${isHovered ? 'hovered dimmed' : ''}`} // Add 'dimmed' class on hover
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <Card.Img variant="top" src={image.src.medium} className="card-image" alt={image.alt} />
-      <Card.Body
+      <img src={image.src.medium} className="card-image" alt={image.alt} />
+      <div
         className={`card-body text-center justify-content-center align-items-center ${
           isHovered ? 'visible' : 'invisible'
         }`} // Toggle visibility on hover
       >
-        <Card.Title className="card-title">{image.photographer}</Card.Title>
-        <Card.Text className="card-text">{image.photographer_url}</Card.Text>
-        <Button variant="primary" className="favorite-button">
+        <div className="card-title">{image.photographer}</div>
+        <hr className="divider" /> {/* Add a horizontal line here */}
+
+        <div className="card-text">{image.alt}</div>
+        <button className="favorite-button">
           Favorite
-        </Button>
-      </Card.Body>
-    </Card>
+        </button>
+      </div>
+    </div>
   );
 };
 
 export default ImageCard;
-
